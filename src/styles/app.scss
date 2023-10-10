@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+@import "_custom-variables.scss";
+
+// Import  from Bulma
+// @import "../../node_modules/bulma/sass/utilities/_all.sass";
+// @import "../../node_modules/bulma/sass/base/_all.sass";
+// @import "../../node_modules/bulma/sass/components/navbar.sass";
+// @import "../../node_modules/bulma/sass/elements/_all.sass";
+// @import "../../node_modules/bulma/sass/form/_all.sass";
+// @import "../../node_modules/bulma/sass/grid/tiles.sass";
+// //@import "../../node_modules/bulma/sass/layout/hero.sass";
+// @import "../../node_modules/bulma/sass/layout/section.sass";
+
+// @font-face {
+// 	font-family: "Arrus-BT-Bold";
+// 	src: url("/assets/webfonts/Arrus-BT-Bold_4573.ttf") format("truetype");
+// }
+
+// :root {
+// 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+// 	line-height: 1.5;
+// 	font-weight: 400;
+
+// 	color-scheme: light dark;
+// 	color: $text-color;
+// 	background-color: $background-color;
+
+// 	font-synthesis: none;
+// 	text-rendering: optimizeLegibility;
+// 	-webkit-font-smoothing: antialiased;
+// 	-moz-osx-font-smoothing: grayscale;
+// 	-webkit-text-size-adjust: 100%;
+// }
+
+html,
+body {
+	position: relative;
+	width: 100%;
+	min-height: 100%;
+	font-size: 16px;
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
