@@ -1,6 +1,6 @@
 <script lang="ts">
 	//import { myRandomStore as rs } from "../stores/my-random-store";
-	import rs from "../stores/my-random-store";
+	//import rs from "../stores/my-random-store";
 </script>
 
 <h2>Demonstrate Stores</h2>
@@ -17,12 +17,7 @@
 
 <div class="card">Blah</div>
 
-<div class="card">
-	<div>Result = {$rs}</div>
-	<div>
-		<button type="button" on:click|preventDefault={rs.run}>Run Random</button>
-	</div>
-</div>
+<div class="card" />
 
 <p>More Stuff</p>
 <p>More Stuff</p>

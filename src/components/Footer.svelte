@@ -1,112 +1,98 @@
 <script>
-	import NavBar from "./NavBar_old.svelte";
+	import Nav from "./Nav.svelte";
 
 	let yr = new Date().getFullYear() - 2000;
 </script>
 
-<section class="section arc-footer">
+<section class="footer-info">
 	<div class="container">
-		<div class="tile is-ancestor">
-			<div class="tile is-parent">
-				<div class="tile is-child">
-					<div class="arc-subhead">SEARCH SITE</div>
-					<div class="field">
-						<div class="control">
-							<div class="gcse-search" />
-							<!--
-                <input class="input is-small" type="text" placeholder="Search">
-                <button class="button is-small"><i class="fas fa-search"></i></button>
-                -->
-						</div>
-					</div>
-				</div>
-			</div>
+		<div class="tile">
+			<div class="subhead">CONTACT US</div>
+			<div class="title">NEXT Semiconductor Technologies, Inc.</div>
+			4115 Sorrento Valley Blvd.
+			<br />
+			San Diego, CA 92121
+		</div>
 
-			<div class="tile is-parent">
-				<div class="tile is-child">
-					<div class="arc-subhead">CONTACT US</div>
-					<div class="arc-title">American Research Capital, LLC</div>
-					5608 17th Avenue NW, Suite 1614
-					<br />
-					Seattle, WA 98107
-				</div>
-			</div>
-
-			<div class="tile is-parent">
-				<div class="tile is-child">
-					<div class="arc-subhead">PHONE &amp; EMAIL</div>
-					<span class="arc-title">Main Phone:</span>
-					(206) 494-0288
-					<br />
-					<span class="arc-title">Luke Fouke:</span>
-					(206) 853-1652
-					<br />
-					<span class="arc-title">Robert Kummer:</span>
-					(206) 818-2855
-					<br />
-					<br />
-					<a
-						href="mailto:info@american-research-capital.com?subject=Web Inquiry"
-						class="arc-title"
-					>
-						info@american-research-capital.com
-					</a>
-				</div>
-			</div>
+		<div class="tile">
+			<div class="subhead">PHONE &amp; EMAIL</div>
+			<span class="title">Main Phone:</span>
+			(858) 707-7033
+			<br />
+			<br />
+			<a href="mailto:info@nextsemi.com?subject=Web Inquiry" class="title"
+				>info@nextsemi.com
+			</a>
 		</div>
 	</div>
 </section>
 
-<section class="section arc-footer-bottom">
+<section class="footer-bottom">
 	<div class="container">
-		<div class="left">&copy;2015-{yr} - American Research Capital, LLC</div>
-		<div class="right">
-			<NavBar isFooter={true} />
+		<div>
+			&copy;20{yr} - NEXT Semiconductor Technologies, Inc.
+		</div>
+		<div>
+			<Nav isFooter={true} />
 		</div>
 	</div>
 </section>
 
 <style lang="scss">
-	@import "../../node_modules/bulma/sass/utilities/_all.sass";
+	@import "../styles/_custom-variables.scss";
+	//@import "../../node_modules/bulma/sass/utilities/_all.sass";
 
-	.arc-footer {
-		color: #dddddd;
-		background-color: #222222;
-		padding: 1rem;
-		font-size: 13px;
-	}
+	section {
+		width: 100%;
 
-	.arc-footer-bottom {
-		color: #eeeeee;
-		background-color: #333333;
-		padding: 1rem 1rem 2rem;
-		font-size: 12px;
+		&.footer-info {
+			color: $white-3;
+			background-color: #222222;
+			padding: 0 1rem 1rem;
+			font-size: 13px;
 
-		.left {
-			float: left;
+			a {
+				color: $white-3;
+				font-weight: bold;
+				text-decoration: none;
 
-			@media screen and (max-width: $tablet) {
-				float: none;
+				&:hover {
+					text-decoration: underline;
+				}
 			}
 		}
 
-		.right {
-			float: right;
+		&.footer-bottom {
+			color: $white-2;
+			background-color: #333333;
+			padding: 1rem;
+			font-size: 12px;
+		}
 
-			@media screen and (max-width: $tablet) {
-				float: none;
-			}
+		.container {
+			display: flex;
+			max-width: $bp-small;
+			margin: 0 auto;
+			justify-content: space-between;
+		}
+
+		.tile {
+			padding: 1rem 0 0;
+		}
+
+		.title {
+			font-weight: bold;
+		}
+
+		.subhead {
+			color: #919191;
+			margin: 0 0 0.25rem;
 		}
 	}
 
-	.arc-subhead {
-		color: #919191;
-		margin: 0 0 0.25rem;
-	}
-
-	.arc-title {
-		color: #ffffff;
-		font-weight: bold;
-		margin: 0;
+	@media screen and (max-width: $bp-small) {
+		section .container {
+			display: block;
+		}
 	}
 </style>

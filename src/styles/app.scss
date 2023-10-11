@@ -33,12 +33,16 @@
 // 	-webkit-text-size-adjust: 100%;
 // }
 
+
+
 html,
 body {
 	position: relative;
 	width: 100%;
-	min-height: 100%;
+	min-height: 100vh;
+	font-family: 'Open Sans', sans-serif;
 	font-size: 16px;
+	background-color: $bg-light;
 	box-sizing: border-box;
 }
 
@@ -51,4 +55,10 @@ body {
 * {
 	margin: 0;
 	padding: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	display: block;
 }

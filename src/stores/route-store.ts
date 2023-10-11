@@ -8,24 +8,48 @@ let getBaseRoutes = (): Route => {
 		path: "/",
 		children: [
 			{
-				title: "Store Demo",
-				page: "StoreDemo",
-				navName: "Stores",
-				path: "/store-demo",
+				title: "Products",
+				page: "Products",
+				navName: "Products",
+				path: "/products",
+				children: [
+					{
+						title: "D2A/A2D Converters",
+						page: "Converters",
+						navName: "D2A/A2D Converters",
+						path: "/converters",
+						children: []
+					},
+					{
+						title: "Specialty IP",
+						page: "SpecialtyIP",
+						navName: "Specialty IP",
+						path: "/specialty-ip",
+						children: []
+					},
+
+				]
+			},
+			{
+				title: "Technology",
+				page: "Technology",
+				navName: "Technology",
+				path: "/technology",
 				children: []
 			},
 			{
-				title: "Axios Demo",
-				page: "AxiosDemo",
-				navName: "Axios",
-				path: "/axios-demo",
+				title: "About Us",
+				page: "About",
+				navName: "About Us",
+				path: "/about-us",
+				isHidden: false,
 				children: []
 			},
 			{
-				title: "Animation Demo",
-				page: "AnimDemo",
-				navName: "Animation",
-				path: "/anim-demo",
+				title: "Contact Us",
+				page: "Contact",
+				navName: "Contact Us",
+				path: "/contact-us",
 				isHidden: false,
 				children: []
 			}

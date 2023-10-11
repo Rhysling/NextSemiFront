@@ -1,65 +1,35 @@
-// Set your brand colors
+// Next
 
-// Set your brand colors
-$arc-blue: #326297;
-$arc-green: #96c348; //#a8cf36;
-$arc-dark-text: #444444;
-$beige-light: #d0d1cd;
-$beige-lighter: #eff0eb;
+$white: rgb(255, 255, 255);
+$white-2: #eeeeee;
+$white-3: #dddddd;
+$black: #222222;
+$black-2: #333333;
+$gray: #999999;
 
-// Update Bulma's global variables
-$family-sans-serif: "Nunito", sans-serif;
-$grey-dark: $arc-dark-text;
-$grey-light: $beige-light;
-$primary: $arc-blue;
+$text-color: $black-2;
+$text-disabled: $gray;
+$text-reverse: $white-3;
 
-$link: $arc-green;
-$link-visited: $arc-green;
-$link-hover: darken($arc-green, 15%); //#667919;
+$brand-primary: rgb(241, 104, 34);
+$brand-secondary: #96c348;
+$bg-dark: #190c09;
+$bg-light: rgb(239, 240, 235);
 
-$widescreen-enabled: false;
-$fullhd-enabled: false;
-
-// Update some of Bulma's component variables
-$body-background-color: $beige-lighter;
-$control-border-width: 2px;
-$input-border-color: transparent;
-$input-shadow: none;
-
-
-// Set your brand colors
-$text-color: #213547;
-$background-color: #eeeeee;
-$background-color-light: #eeeeee;
-
-
-$main-color: rgb(70, 69, 5);
-$second-color: rgb(50, 67, 115);
-$text-disabled: #999;
-
-$nav-bg-color: #d0d1cd;
+$nav-bg-color: rgb(255, 255, 255); // #d0d1cd;
 $nav-drop-bg-color: #eff0eb; // #f9f9f9;
-
-$beige-light: #d0d1cd;
-$beige-lighter: #eff0eb;
 
 $error-primary: #ff0033;
 $error-secondary: rgb(255, 212, 209);
 
-$bp-small: 560px;
 
+$link: $brand-primary;
+$link-visited: $brand-primary;
+$link-hover: darken($brand-primary, 15%);
 
-$link: $main-color;
-$link-visited: $main-color;
-$link-hover: darken($main-color, 15%);
-
-$button-hover: #646cff;
 
 //Responsiveness Sizes
 
-//$gap: 32px !default
-// 960, 1152, and 1344 have been chosen because they are divisible by both 12 and 16
-//$tablet: 769px !default
-// 960px container + 4rem
+$bp-small: 900px; //560px;
+$content-width: 960px;
 $desktop: 1152px !default;
-// 1152px container + 4rem

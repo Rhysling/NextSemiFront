@@ -13,21 +13,23 @@
 
 {#if $currentRoute}
 	<Headroom offset={50}>
-		<div class="arc-nav">
-			<Nav isFooter={false} />
+		<div class="nav-wrap">
+			<div class="nav-container">
+				<div class="arc-nav">
+					<Nav isFooter={false} />
+				</div>
+			</div>
 		</div>
 	</Headroom>
 	{#if $currentRoute.path === "/"}
 		<div class="logo">
-			<img src="/img/arc-logo4.png" alt="American Research Capital" />
+			<img src="./assets/img/logo-med.png" alt="NEXT Semiconductor" />
 		</div>
-		<div class="head">
-			<img src="/img/arc-head.jpg" alt="" />
-		</div>
-		<div class="subhead">Financing Designed for Research</div>
+
+		<div class="subhead">Tomorrow's Technology Today</div>
 	{:else}
 		<div class="head2">
-			<img src="/img/arc-head4.jpg" alt="" />
+			<img src="./assets/img/horizon2.png" alt="" />
 		</div>
 	{/if}
 {/if}
@@ -36,16 +38,22 @@
 	@import "../styles/_custom-variables.scss";
 	//@import "../../node_modules/bulma/sass/utilities/_all.sass";
 
+	.nav-wrap {
+		width: 100%;
+		background-color: $white;
+	}
+	.nav-container {
+		max-width: $content-width;
+		margin: 0 auto;
+	}
+
 	.logo {
-		margin: 60px 0 0;
+		margin: 3rem 0;
 		//width: 100%;
 
 		img {
 			display: block;
 			margin: 0 auto;
-			padding: 0 0.5rem;
-			max-height: 150px;
-			width: auto;
 		}
 	}
 
@@ -59,26 +67,31 @@
 		position: relative;
 		margin: 0;
 		width: 100%;
-		background-image: url("/img/arc-head-bg.jpg");
+		//background-image: url("/img/arc-head-bg.jpg");
+		background-color: $bg-dark;
 
 		img {
 			display: block;
 			margin: 0 auto;
 			height: auto;
-			width: auto;
+			width: 100%;
+			overflow: hidden;
 		}
 	}
 
 	.head2 {
-		margin: 60px 0 0;
+		margin: 0;
 		width: 100%;
-		background-image: url("/img/arc-head4-bg.jpg");
+
+		//background-image: url("/img/arc-head4-bg.jpg");
+		background-color: $bg-dark;
 
 		img {
 			display: block;
 			margin: 0 auto;
 			height: auto;
-			width: auto;
+			width: 100%;
+			overflow: hidden;
 		}
 	}
 
@@ -87,8 +100,8 @@
 		font-family: "Montserrat", serif;
 		font-size: 2.5rem; //30px;
 		text-align: center;
-		color: white;
-		background-color: #0174b7;
+		color: $white-2;
+		background-color: $brand-primary;
 		padding: 4px;
 
 		@media screen and (max-width: $desktop) {

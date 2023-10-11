@@ -40,16 +40,8 @@
 </main>
 
 <style lang="scss">
-	@import "./styles/_custom-variables.scss";
-
 	main {
-		background-color: #fff;
-		min-width: 500px;
-		max-width: 800px;
-		margin: 1rem auto;
-		padding: 1em;
-	}
-
-	@media only screen and (max-width: $bp-small) {
+		width: 100%;
+		min-height: 100vh;
 	}
 </style>
