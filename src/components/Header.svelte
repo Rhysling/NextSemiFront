@@ -15,7 +15,7 @@
 	<Headroom offset={50}>
 		<div class="nav-wrap">
 			<div class="nav-container">
-				<div class="arc-nav">
+				<div class="nav">
 					<Nav isFooter={false} />
 				</div>
 			</div>
@@ -57,7 +57,7 @@
 		}
 	}
 
-	.arc-nav {
+	.nav {
 		margin: 0;
 		width: 100%;
 		background-color: #fff;

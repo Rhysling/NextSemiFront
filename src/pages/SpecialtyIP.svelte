@@ -3,13 +3,8 @@
 
 <div class="g-page-container">
 	<div class="g-page-content">
-		<h1>This is the home page.</h1>
+		<h1>Specialty IP Here</h1>
 
-		<p>More Stuff</p>
-		<p>More Stuff</p>
-		<p>More Stuff</p>
-		<p>More Stuff</p>
-		<p>More Stuff</p>
 		<p>More Stuff</p>
 		<p>More Stuff</p>
 		<p>More Stuff</p>

@@ -8,7 +8,7 @@
 	<div class="container">
 		<div class="tile">
 			<div class="subhead">CONTACT US</div>
-			<div class="title">NEXT Semiconductor Technologies, Inc.</div>
+			<div class="foot-title">NEXT Semiconductor Technologies, Inc.</div>
 			4115 Sorrento Valley Blvd.
 			<br />
 			San Diego, CA 92121
@@ -16,11 +16,11 @@
 
 		<div class="tile">
 			<div class="subhead">PHONE &amp; EMAIL</div>
-			<span class="title">Main Phone:</span>
+			<span class="foot-title">Main Phone:</span>
 			(858) 707-7033
 			<br />
 			<br />
-			<a href="mailto:info@nextsemi.com?subject=Web Inquiry" class="title"
+			<a href="mailto:info@nextsemi.com?subject=Web Inquiry" class="foot-title"
 				>info@nextsemi.com
 			</a>
 		</div>
@@ -80,7 +80,7 @@
 			padding: 1rem 0 0;
 		}
 
-		.title {
+		.foot-title {
 			font-weight: bold;
 		}
 

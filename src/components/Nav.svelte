@@ -56,13 +56,14 @@
 		{#each primaryRoutes as route, i}
 			<a
 				href="/"
-				on:click={(e) =>
+				on:click={(e) => {
 					nav(
 						e,
 						route.children && route.children.length
 							? route.children[0].path
-							: "/"
-					)}>{route.title}</a
+							: route.path
+					);
+				}}>{route.title}</a
 			>
 			{#if i < routeLastIndex}&nbsp;&nbsp;|&nbsp;&nbsp;{/if}
 		{/each}
@@ -79,7 +80,7 @@
 			<i class="fa-solid fa-bars" />
 		</div>
 		<nav>
-			<div class="home menu-item">
+			<div class="home">
 				<a href="/" on:click={(e) => nav(e, "/")}>
 					<img src="./assets/img/logo-sm.png" alt="Home" /><span>Home</span></a
 				>
@@ -97,7 +98,7 @@
 						class:open={r.isExpanded ? true : undefined}
 						class:has-selected-child={r.hasSelectedChild}
 					>
-						<span class="icon"
+						<span
 							>{r.page}
 							<i
 								class="fa-solid"
@@ -140,18 +141,21 @@
 		align-items: center;
 		justify-content: space-between;
 		background-color: $nav-bg-color;
+	}
 
-		.menu-item {
-			display: block;
-			box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.2);
-			border-radius: 5px;
-			padding: 0.5em;
-			margin: 0.5em;
-		}
+	.menu-item {
+		display: block;
+		box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.2);
+		border-radius: 5px;
+		padding: 0.5em;
+		margin: 0.5em;
 	}
 
 	.home {
 		flex-grow: 1;
+		display: block;
+		padding: 0;
+		margin: 0;
 
 		span {
 			display: none;

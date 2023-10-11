@@ -5,7 +5,11 @@
 	import Footer from "./components/Footer.svelte";
 
 	import Home from "./pages/Home.svelte";
-	import StoreDemo from "./pages/StoreDemo.svelte";
+	import Converters from "./pages/Converters.svelte";
+	import SpecialtyIP from "./pages/SpecialtyIP.svelte";
+	import Technology from "./pages/Technology.svelte";
+	import About from "./pages/About.svelte";
+	import Contact from "./pages/Contact.svelte";
 
 	import { currentRoute, navFromUrl } from "./stores/route-store.js";
 
@@ -18,7 +22,11 @@
 
 	let pages: any = {
 		Home,
-		StoreDemo,
+		Converters,
+		SpecialtyIP,
+		Technology,
+		About,
+		Contact,
 	};
 
 	$: {
@@ -35,13 +43,16 @@
 
 <main>
 	<Header />
-	<svelte:component this={pages[page]} />
+	<div class="g-page">
+		<svelte:component this={pages[page]} />
+	</div>
 	<Footer />
 </main>
 
 <style lang="scss">
+	@import "styles/_custom-variables.scss";
+
 	main {
-		width: 100%;
-		min-height: 100vh;
+		background-color: $bg-light;
 	}
 </style>
