@@ -22,8 +22,12 @@
 		</div>
 	</Headroom>
 	{#if $currentRoute.path === "/"}
-		<div class="logo">
+		<!-- <div class="logo">
 			<img src="./assets/img/logo-med.png" alt="NEXT Semiconductor" />
+		</div> -->
+
+		<div class="logo-reverse">
+			<img src="./assets/img/logo-med-reverse.png" alt="NEXT Semiconductor" />
 		</div>
 
 		<div class="subhead">Tomorrow's Technology Today</div>
@@ -50,6 +54,22 @@
 	.logo {
 		margin: 3rem 0;
 		//width: 100%;
+
+		img {
+			display: block;
+			margin: 0 auto;
+		}
+	}
+
+	.logo-reverse {
+		padding: 2rem 0;
+
+		background: radial-gradient(
+			1600px 400px at 50% 120%,
+			yellow 10%,
+			$brand-primary 25%,
+			$black 60%
+		);
 
 		img {
 			display: block;
@@ -103,9 +123,28 @@
 		color: $white-2;
 		background-color: $brand-primary;
 		padding: 4px;
+	}
 
-		@media screen and (max-width: $desktop) {
-			font-size: 1.5rem;
+	@media screen and (max-width: $bp-small) {
+		.logo-reverse {
+			padding: 1rem 0;
+
+			background: radial-gradient(
+				1600px 400px at 50% 130%,
+				yellow 8%,
+				$brand-primary 15%,
+				$black 40%
+			);
+
+			img {
+				display: block;
+				max-width: 45vw;
+				margin: 0 auto;
+			}
+		}
+
+		.subhead {
+			font-size: 2rem;
 		}
 	}
 </style>

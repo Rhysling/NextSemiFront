@@ -47,7 +47,7 @@
 
 		&.footer-info {
 			color: $white-3;
-			background-color: #222222;
+			background-color: $black;
 			padding: 0 1rem 1rem;
 			font-size: 13px;
 
@@ -64,7 +64,7 @@
 
 		&.footer-bottom {
 			color: $white-2;
-			background-color: #333333;
+			background-color: $black-2;
 			padding: 1rem;
 			font-size: 12px;
 		}

@@ -3,22 +3,16 @@
 
 <div class="g-page-container">
 	<div class="g-page-content">
-		<h1>Specialty IP Here</h1>
+		<div class="g-page-header">NXT-SDX: Software-Defined Radio System</div>
 
-		<p>More Stuff</p>
-		<p>More Stuff</p>
-		<p>More Stuff</p>
+		<p>To Come</p>
+		<p>To Come</p>
+		<p>To Come</p>
 	</div>
 </div>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
-
-	h1 {
-		margin-top: 3rem;
-		text-align: center;
-		font-size: 4rem;
-	}
 
 	p {
 		padding: 3rem 2rem;

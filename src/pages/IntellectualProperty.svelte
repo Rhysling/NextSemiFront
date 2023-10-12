@@ -3,25 +3,25 @@
 
 <div class="g-page-container">
 	<div class="g-page-content">
-		<h1>Converter Info Here</h1>
-
-		<p>More Stuff</p>
-		<p>More Stuff</p>
-		<p>More Stuff</p>
+		<div class="g-page-header">NXT-IP: Intellectual Property Cores</div>
+		<ul>
+			<li>ADC (Analog to Digital Converters)</li>
+			<li>DAC (Digital to Analog Converters)</li>
+			<li>PLL (Phase Lock Loop Clock Generators)</li>
+			<li>
+				AFE Macros (AFE = Analog Front End, does not include DSP processing)
+			</li>
+			<li>DTRX Macros (DTRX = Digital Transceiver, includes DSP processing)</li>
+		</ul>
 	</div>
 </div>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
 
-	h1 {
-		margin-top: 3rem;
-		text-align: center;
-		font-size: 4rem;
-	}
-
-	p {
-		padding: 3rem 2rem;
+	ul {
+		margin: 2rem;
+		line-height: 200%;
 	}
 
 	// .logo {

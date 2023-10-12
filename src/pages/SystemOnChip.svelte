@@ -1,0 +1,40 @@
+<script lang="ts">
+</script>
+
+<div class="g-page-container">
+	<div class="g-page-content">
+		<div class="g-page-header">System-on-Chip Platform</div>
+
+		<p>
+			Description will include a block diagram and engagement model for adding
+			customer-specific IP
+		</p>
+	</div>
+</div>
+
+<style lang="scss">
+	@import "../styles/_custom-variables.scss";
+
+	p {
+		padding: 3rem 2rem;
+	}
+
+	// .logo {
+	// 	height: 6em;
+	// 	padding: 1.5em;
+	// 	will-change: filter;
+	// 	transition: filter 300ms;
+
+	// 	&:hover {
+	// 		filter: drop-shadow(0 0 2em #646cffaa);
+	// 	}
+
+	// 	&.svelte:hover {
+	// 		filter: drop-shadow(0 0 2em #ff3e00aa);
+	// 	}
+	// }
+
+	// .read-the-docs {
+	// 	color: #888;
+	// }
+</style>

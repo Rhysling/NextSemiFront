@@ -5,8 +5,9 @@
 	import Footer from "./components/Footer.svelte";
 
 	import Home from "./pages/Home.svelte";
-	import Converters from "./pages/Converters.svelte";
-	import SpecialtyIP from "./pages/SpecialtyIP.svelte";
+	import SoftwareDefinedRadio from "./pages/SoftwareDefinedRadio.svelte";
+	import SystemOnChip from "./pages/SystemOnChip.svelte";
+	import IntellectualProperty from "./pages/IntellectualProperty.svelte";
 	import Technology from "./pages/Technology.svelte";
 	import About from "./pages/About.svelte";
 	import Contact from "./pages/Contact.svelte";
@@ -22,8 +23,9 @@
 
 	let pages: any = {
 		Home,
-		Converters,
-		SpecialtyIP,
+		SoftwareDefinedRadio,
+		SystemOnChip,
+		IntellectualProperty,
 		Technology,
 		About,
 		Contact,

@@ -72,19 +72,31 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<div class="nav-vertical" class:open={isOpenRoot ? true : undefined}>
-		<div
-			class="nav-toggle"
-			on:mouseenter={() => setOpenRoot(true)}
-			on:click|stopPropagation={() => setOpenRoot(!isOpenRoot)}
-		>
-			<i class="fa-solid fa-bars" />
-		</div>
-		<nav>
-			<div class="home">
+		<div class="toggle-bar">
+			<div
+				class="nav-toggle"
+				on:mouseenter={() => setOpenRoot(true)}
+				on:click|stopPropagation={() => setOpenRoot(!isOpenRoot)}
+			>
+				<i class="fa-solid fa-bars" style="font-size:1.75rem;padding:0.3rem;" />
+			</div>
+			<div class="toggle-bar-logo">
 				<a href="/" on:click={(e) => nav(e, "/")}>
-					<img src="./assets/img/logo-sm.png" alt="Home" /><span>Home</span></a
+					<img src="./assets/img/logo-sm.png" alt="Home" /></a
 				>
 			</div>
+		</div>
+		<nav>
+			<a class="home show-horizontal" href="/" on:click={(e) => nav(e, "/")}>
+				<img src="./assets/img/logo-sm.png" alt="Home" /></a
+			>
+			<a
+				class="home menu-item show-vertical"
+				href="/"
+				on:click={(e) => nav(e, "/")}
+			>
+				Home</a
+			>
 
 			{#each primaryRoutes as r}
 				{#if r.children && r.children.length}
@@ -138,9 +150,11 @@
 
 	nav {
 		display: flex;
+		gap: 1em;
 		align-items: center;
 		justify-content: space-between;
 		background-color: $nav-bg-color;
+		padding: 0 0.5rem;
 	}
 
 	.menu-item {
@@ -148,27 +162,30 @@
 		box-shadow: 0px 6px 12px 0px rgba(0, 0, 0, 0.2);
 		border-radius: 5px;
 		padding: 0.5em;
-		margin: 0.5em;
+		margin: 0.5em 0;
+	}
+
+	.show-horizontal {
+		display: block !important;
+	}
+
+	.show-vertical {
+		display: none !important;
 	}
 
 	.home {
 		flex-grow: 1;
-		display: block;
 		padding: 0;
 		margin: 0;
-
-		span {
-			display: none;
-		}
-
-		a {
-			display: inline-block;
-		}
 
 		img {
 			display: inline-block;
 			width: 109px;
 			height: 30px;
+		}
+
+		span {
+			display: none;
 		}
 	}
 
@@ -211,7 +228,7 @@
 		position: absolute;
 		left: 2rem;
 		background-color: $bg-light;
-		min-width: 160px;
+		min-width: 300px;
 		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 		padding: 0.5em 0.75em;
 		z-index: 5;
@@ -239,8 +256,12 @@
 		display: block;
 	}
 
-	.nav-toggle {
+	.toggle-bar {
 		display: none;
+
+		.toggle-bar-logo {
+			padding: 0 0.5rem;
+		}
 	}
 
 	.bottom-nav a {
@@ -248,9 +269,39 @@
 	}
 
 	@media screen and (max-width: $bp-small) {
+		.toggle-bar {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background-color: $nav-bg-color;
+		}
+
+		.show-horizontal {
+			display: none !important;
+		}
+
+		.show-vertical {
+			display: block !important;
+		}
+
+		.home {
+			display: block;
+
+			span {
+				display: inline;
+			}
+
+			// a {
+			// 	display: inline-block;
+			// }
+
+			img {
+				display: none;
+			}
+		}
+
 		.nav-toggle {
 			display: inline-block;
-			background-color: $nav-bg-color;
 			padding: 0.5em;
 
 			i {
@@ -260,16 +311,6 @@
 				&:hover {
 					cursor: pointer;
 				}
-			}
-		}
-
-		.home {
-			span {
-				display: inline;
-			}
-
-			img {
-				display: none;
 			}
 		}
 

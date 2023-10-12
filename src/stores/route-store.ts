@@ -14,17 +14,23 @@ let getBaseRoutes = (): Route => {
 				path: "/products",
 				children: [
 					{
-						title: "D2A/A2D Converters",
-						page: "Converters",
-						navName: "D2A/A2D Converters",
-						path: "/converters",
+						title: "NXT-SDX: Software-Defined Radio",
+						page: "SoftwareDefinedRadio",
+						navName: "NXT-SDX: Software-Defined Radio",
+						path: "/software-defined-radio",
+						children: []
+					}, {
+						title: "NXT-SoC: System-on-chip platform",
+						page: "SystemOnChip",
+						navName: "NXT-SoC: System-on-chip platform",
+						path: "/system-on-chip",
 						children: []
 					},
 					{
-						title: "Specialty IP",
-						page: "SpecialtyIP",
-						navName: "Specialty IP",
-						path: "/specialty-ip",
+						title: "NXT-IP: Intellectual Property Cores",
+						page: "IntellectualProperty",
+						navName: "NXT-IP: Intellectual Property Cores",
+						path: "/intellectual-property",
 						children: []
 					},
 
