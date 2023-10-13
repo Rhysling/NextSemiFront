@@ -11,8 +11,27 @@ $text-color: $black-2;
 $text-disabled: $gray;
 $text-reverse: $white-3;
 
-$brand-primary: rgb(241, 104, 34);
-$brand-secondary: #96c348;
+//$brand-primary: darken(rgb(241, 104, 34), 10%);
+//https://paletton.com/#uid=30j0u0ku1qujUx6p7u4w2lzExgt
+
+$brand-primary: #D3500D; // Main Primary color */
+$brand-primary-1: #FF9660;
+$brand-primary-2: #F07334;
+$brand-primary-3: #AC3A00;
+$brand-primary-4: #832C00;
+
+$brand-secondary-0: #124D89; // Main Secondary color */
+$brand-secondary-1: #4878A9;
+$brand-secondary-2: #2B629C;
+$brand-secondary-3: #093B70;
+$brand-secondary-4: #052C55;
+
+$brand-third-0: #4CB80B; // Main Third color */
+$brand-third-1: #89E055;
+$brand-third-2: #6AD12D;
+$brand-third-3: #389600;
+$brand-third-4: #2B7300;
+
 $bg-dark: #190c09;
 $bg-light: rgb(239, 240, 235);
 
@@ -32,4 +51,20 @@ $link-hover: darken($brand-primary, 15%);
 
 $bp-small: 900px; //560px;
 $content-width: 960px;
-$desktop: 1152px !default;
+
+// Extras for reference
+
+// .logo {
+// 	height: 6em;
+// 	padding: 1.5em;
+// 	will-change: filter;
+// 	transition: filter 300ms;
+
+// 	&:hover {
+// 		filter: drop-shadow(0 0 2em #646cffaa);
+// 	}
+
+// 	&.svelte:hover {
+// 		filter: drop-shadow(0 0 2em #ff3e00aa);
+// 	}
+// }

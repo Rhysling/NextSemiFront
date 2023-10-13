@@ -102,15 +102,14 @@
 	.head2 {
 		margin: 0;
 		width: 100%;
-
-		//background-image: url("/img/arc-head4-bg.jpg");
 		background-color: $bg-dark;
 
 		img {
 			display: block;
 			margin: 0 auto;
 			height: auto;
-			width: 100%;
+			width: clamp(800px, 100%, 1000px);
+			max-width: unset;
 			overflow: hidden;
 		}
 	}

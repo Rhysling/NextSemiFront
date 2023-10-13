@@ -189,16 +189,22 @@
 		}
 	}
 
-	// a:first-child {
-	//   margin: 0.5em 0.5em 0.5em 0.25rem;
-	// }
+	a,
+	a:visited {
+		color: $brand-primary;
+		text-decoration: none;
+	}
 
 	a:hover {
-		background-color: darken($nav-bg-color, 10%);
+		//color: darken($brand-primary, 5%);
+		color: $brand-primary-3;
+		background-color: darken($nav-bg-color, 5%);
 	}
 
 	a.has-selected-child {
-		background-color: lighten($brand-primary, 20%);
+		// background-color: lighten($brand-primary, 30%);
+		//background-color: rgb(245, 182, 42);
+		background-color: lighten($brand-primary-1, 15%);
 	}
 
 	a.selected {
@@ -206,10 +212,6 @@
 		box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.6);
 		background-color: $brand-primary;
 		cursor: default;
-
-		&:hover {
-			text-decoration: none;
-		}
 	}
 
 	.dropdown {

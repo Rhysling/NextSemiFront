@@ -1,20 +1,18 @@
 <script lang="ts">
+	import MainContainer from "../components/MainContainer.svelte";
 </script>
 
-<div class="g-page-container">
-	<div class="g-page-content">
-		<div class="g-page-header">NXT-IP: Intellectual Property Cores</div>
-		<ul>
-			<li>ADC (Analog to Digital Converters)</li>
-			<li>DAC (Digital to Analog Converters)</li>
-			<li>PLL (Phase Lock Loop Clock Generators)</li>
-			<li>
-				AFE Macros (AFE = Analog Front End, does not include DSP processing)
-			</li>
-			<li>DTRX Macros (DTRX = Digital Transceiver, includes DSP processing)</li>
-		</ul>
-	</div>
-</div>
+<MainContainer headline="NXT-IP: Intellectual Property Cores">
+	<ul>
+		<li>ADC (Analog to Digital Converters)</li>
+		<li>DAC (Digital to Analog Converters)</li>
+		<li>PLL (Phase Lock Loop Clock Generators)</li>
+		<li>
+			AFE Macros (AFE = Analog Front End, does not include DSP processing)
+		</li>
+		<li>DTRX Macros (DTRX = Digital Transceiver, includes DSP processing)</li>
+	</ul>
+</MainContainer>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
