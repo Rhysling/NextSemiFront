@@ -20,3 +20,20 @@ type PageState = {
 	startIndex: number;
 	endIndex: number;
 };
+
+type RecaptchaVerificationResult = {
+	success: boolean;
+	score: number;
+	action: string;
+	challenge_ts: string;
+	hostname: string;
+	errorCodes: string[];
+};
+
+type ContactMessage = {
+	name: string;
+	email: string;
+	company: string;
+	phone: string;
+	message: string;
+};

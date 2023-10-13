@@ -35,7 +35,6 @@
 	}
 
 	.page-header {
-		width: 100%;
 		font-family: "Montserrat", serif;
 		font-size: 2.5rem; //30px;
 		text-align: center;

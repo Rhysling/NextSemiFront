@@ -51,16 +51,6 @@
 		margin: 0 auto;
 	}
 
-	.logo {
-		margin: 3rem 0;
-		//width: 100%;
-
-		img {
-			display: block;
-			margin: 0 auto;
-		}
-	}
-
 	.logo-reverse {
 		padding: 2rem 0;
 
@@ -81,22 +71,6 @@
 		margin: 0;
 		width: 100%;
 		background-color: #fff;
-	}
-
-	.head {
-		position: relative;
-		margin: 0;
-		width: 100%;
-		//background-image: url("/img/arc-head-bg.jpg");
-		background-color: $bg-dark;
-
-		img {
-			display: block;
-			margin: 0 auto;
-			height: auto;
-			width: 100%;
-			overflow: hidden;
-		}
 	}
 
 	.head2 {

@@ -183,10 +183,6 @@
 			width: 109px;
 			height: 30px;
 		}
-
-		span {
-			display: none;
-		}
 	}
 
 	a,
@@ -268,6 +264,11 @@
 
 	.bottom-nav a {
 		color: $text-reverse;
+		background-color: unset;
+
+		&:hover {
+			text-decoration: underline;
+		}
 	}
 
 	@media screen and (max-width: $bp-small) {
@@ -288,14 +289,6 @@
 
 		.home {
 			display: block;
-
-			span {
-				display: inline;
-			}
-
-			// a {
-			// 	display: inline-block;
-			// }
 
 			img {
 				display: none;

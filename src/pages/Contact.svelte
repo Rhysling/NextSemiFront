@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { testCaptcha, sendContactMsg } from "../lib/ajax";
 	import { navTo } from "../stores/route-store.js";
 	import MainContainer from "../components/MainContainer.svelte";
 
 	type TriState = boolean | null;
 
-	let msg = {
+	let msg: ContactMessage = {
 		name: "",
 		email: "",
 		company: "",
@@ -17,9 +18,10 @@
 	let isValidCompany: TriState = null; // true / false
 	let emailValidationMessage = "";
 	let validationSummaryMessage = "";
+	let isNotSent = true;
 	let isDone = false;
 
-	$: isAllValid = isValidName && isValidEmail && isValidCompany;
+	$: isAllValid = isValidName && isValidEmail && isValidCompany && isNotSent;
 
 	const validateName = () => {
 		msg.name = msg.name || "";
@@ -63,10 +65,7 @@
 		msg.message = "";
 	};
 
-	const submit = () => {
-		alert("Not implemented yet.");
-		return;
-
+	const submit = async () => {
 		validateName();
 		validateEmail();
 		validateCompany();
@@ -76,61 +75,46 @@
 			return;
 		}
 
-		// Test CAPTCHA ********
+		isNotSent = false;
 
-		// grecaptcha
-		// 	.execute("6Lewq88UAAAAAJu_YijXIiu5PTpnvwdMekC15j04", {
-		// 		action: "contactus",
-		// 	})
-		// 	.then(function (token) {
-		// 		// Validate it ********
+		let res: RecaptchaVerificationResult;
 
-		// 		fetch("/api/recaptcha", {
-		// 			method: "POST",
-		// 			headers: {
-		// 				"Content-Type": "application/json",
-		// 			},
-		// 			body: JSON.stringify({ token: token }),
-		// 		}).then((r) =>
-		// 			r.json().then(function (data) {
-		// 				console.log(data);
+		try {
+			res = await testCaptcha();
+		} catch (e: any) {
+			console.error({ e });
+			validationSummaryMessage =
+				"Something went wrong.  Please call or email us directly.";
+			isDone = false;
+			return;
+		}
 
-		// 				if (data && data.success && data.score && +data.score > 0.6) {
-		// 					// Send it ********
+		if (res.score > 0.6) {
+			let srCode = 0;
+			try {
+				srCode = await sendContactMsg(msg);
+			} catch (e: any) {
+				console.error({ e });
+				validationSummaryMessage =
+					"Something went wrong.  Please call or email us directly.";
+				isDone = false;
+				return;
+			}
 
-		// 					fetch("/api/sendcontact?k=812g", {
-		// 						method: "POST",
-		// 						headers: {
-		// 							"Content-Type": "application/json",
-		// 						},
-		// 						body: JSON.stringify(msg),
-		// 					})
-		// 						.then((response) => {
-		// 							if (response.ok) {
-		// 								//console.log("Success:", response);
-		// 								validationSummaryMessage = "";
-		// 								isDone = true;
-		// 							} else {
-		// 								console.log("Failure:", response);
-		// 								validationSummaryMessage =
-		// 									"Something went wrong.  Please call or email us directly.";
-		// 								isDone = false;
-		// 							}
-		// 						})
-		// 						.catch((error) => {
-		// 							console.error("Error:", error);
-		// 							validationSummaryMessage =
-		// 								"Something went wrong.  Please call or email us directly.";
-		// 							isDone = false;
-		// 						});
-		// 				} else {
-		// 					validationSummaryMessage =
-		// 						"The system thinks you are a robot.  Please call or email us directly.";
-		// 					isDone = false;
-		// 				}
-		// 			})
-		// 		);
-		// 	});
+			if (srCode < 300) {
+				validationSummaryMessage = "";
+				isDone = true;
+			} else {
+				console.error("Failure:", srCode);
+				validationSummaryMessage =
+					"Something went wrong.  Please call or email us directly.";
+				isDone = false;
+			}
+		} else {
+			validationSummaryMessage =
+				"The system thinks you are a robot.  Please call or email us directly.";
+			isDone = false;
+		}
 	};
 
 	let cancel = function () {
@@ -142,6 +126,7 @@
 		emailValidationMessage = "";
 		validationSummaryMessage = "";
 
+		isNotSent = true;
 		isDone = false;
 	};
 </script>
@@ -291,37 +276,34 @@
 			</div>
 		</div>
 		<div>
-			<p class="is-size-7 has-text-danger">
+			<p class="contact-error">
 				{validationSummaryMessage}&nbsp;
 			</p>
 		</div>
 		<!-- Form end-->
 	{:else}
-		<div class="arc-subhead" style="padding-bottom:1.5rem;">
-			Your Message is Sent
-		</div>
+		<div class="done-subhead">Your Message is Sent</div>
 
-		<div class="l-title">Name</div>
-		<div class="l-content">{msg.name}</div>
+		<div class="done-title">Name</div>
+		<div class="done-text">{msg.name}</div>
 
-		<div class="l-title">Email</div>
-		<div class="l-content">{msg.email}</div>
+		<div class="done-title">Email</div>
+		<div class="done-text">{msg.email}</div>
 
-		<div class="l-title">Company / Organization</div>
-		<div class="l-content">{msg.company}</div>
+		<div class="done-title">Company / Organization</div>
+		<div class="done-text">{msg.company}</div>
 
-		<div class="l-title">Phone</div>
-		<div class="l-content">{msg.phone || "None"}</div>
+		<div class="done-title">Phone</div>
+		<div class="done-text">{msg.phone || "None"}</div>
 
-		<div class="l-title">Message</div>
-		<div class="l-content">{msg.message || "None"}</div>
-		<hr style="width:100%;" />
-		<div style="width:100%; text-align:center;">
+		<div class="done-title">Message</div>
+		<div class="done-text">{msg.message || "None"}</div>
+
+		<div class="done-button-container">
 			<button
 				class="button is-link"
-				on:click={navTo}
+				on:click={(e) => navTo(e, "/")}
 				on:click={cancel}
-				data-dest="/"
 			>
 				Done
 			</button>
@@ -330,15 +312,36 @@
 </MainContainer>
 
 <style lang="scss">
-	.l-title {
-		float: left;
-		width: 200px;
+	@import "../styles/_custom-variables.scss";
+
+	.contact-error {
+		color: $error-primary;
+		margin: 0.3rem 0;
+	}
+
+	.done-title {
+		margin: 0.5rem 0 0;
+		padding: 0.25rem;
 		font-weight: bold;
 	}
 
-	.l-content {
-		float: left;
-		width: 300px;
-		padding: 0 0 0.5rem 1rem;
+	.done-text {
+		margin: 0;
+		padding: 0.25rem 0.5rem 0.25rem 1.5rem;
+		font-weight: normal;
+	}
+
+	.done-subhead {
+		font-size: 1.25rem;
+		font-weight: bold;
+		padding: 0 0 0.5rem;
+		text-align: center;
+	}
+
+	.done-button-container {
+		margin: 1rem 0;
+		padding: 1rem;
+		border-top: 2px solid black;
+		text-align: center;
 	}
 </style>
