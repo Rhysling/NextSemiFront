@@ -3,8 +3,6 @@
 	import { navTo } from "../stores/route-store.js";
 	import MainContainer from "../components/MainContainer.svelte";
 
-	type TriState = boolean | null;
-
 	let msg: ContactMessage = {
 		name: "",
 		email: "",
@@ -265,14 +263,16 @@
 
 		<div class="field is-grouped">
 			<div class="control">
-				<button class="button is-link" on:click={submit} disabled={!isAllValid}>
+				<button
+					class="button is-success"
+					on:click={submit}
+					disabled={!isAllValid}
+				>
 					Submit
 				</button>
 			</div>
 			<div class="control">
-				<button class="button is-link is-light" on:click={cancel}>
-					Cancel
-				</button>
+				<button class="button" on:click={cancel}> Cancel </button>
 			</div>
 		</div>
 		<div>

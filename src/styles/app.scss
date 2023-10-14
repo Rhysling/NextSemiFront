@@ -75,4 +75,12 @@ a {
 	}
 }
 
+button.is-success {
+	background-color: hsl(153, 53%, 53%);
+
+	&:hover {
+		background-color: darken(hsl(153, 53%, 53%), 10%);
+	}
+}
+
 // Global classes

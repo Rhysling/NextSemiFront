@@ -82,13 +82,13 @@
 			</div>
 			<div class="toggle-bar-logo">
 				<a href="/" on:click={(e) => nav(e, "/")}>
-					<img src="./assets/img/logo-sm.png" alt="Home" /></a
+					<img src="/assets/img/logo-sm.png" alt="Home" /></a
 				>
 			</div>
 		</div>
 		<nav>
 			<a class="home show-horizontal" href="/" on:click={(e) => nav(e, "/")}>
-				<img src="./assets/img/logo-sm.png" alt="Home" /></a
+				<img src="/assets/img/logo-sm.png" alt="Home" /></a
 			>
 			<a
 				class="home menu-item show-vertical"

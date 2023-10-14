@@ -82,7 +82,8 @@
 			display: block;
 			margin: 0 auto;
 			height: auto;
-			width: clamp(800px, 100%, 1000px);
+			//width: clamp(800px, 100%, 1000px);
+			width: min(100vw, 1000px);
 			max-width: unset;
 			overflow: hidden;
 		}

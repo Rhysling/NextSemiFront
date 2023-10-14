@@ -13,6 +13,8 @@ type Route = {
 
 type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
 
+type TriState = boolean | null;
+
 type PageState = {
 	itemsPerPage: number;
 	itemCount: number;
@@ -36,4 +38,18 @@ type ContactMessage = {
 	company: string;
 	phone: string;
 	message: string;
+};
+
+type UserClient = {
+	userId: number;
+	email: string;
+	fullName: string;
+	token: string;
+	isAdmin: boolean;
+};
+
+type UserLogin = {
+	email: string;
+	fullName: string;
+	pw: string;
 };

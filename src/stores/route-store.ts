@@ -58,6 +58,14 @@ let getBaseRoutes = (): Route => {
 				path: "/contact-us",
 				isHidden: false,
 				children: []
+			},
+			{
+				title: "Admin",
+				page: "Admin",
+				navName: "Admin",
+				path: "/admin/admin",
+				isHidden: true,
+				children: []
 			}
 		]
 	};
