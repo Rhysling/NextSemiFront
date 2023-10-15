@@ -1,12 +1,16 @@
 <script lang="ts">
 	import Modal from "./Modal.svelte";
-	import { user, isLoggedIn, isAdmin } from "../stores/user-store";
+	import { user, isLoggedIn } from "../stores/user-store";
 	import { httpClient as ax } from "../stores/httpclient-store";
+	import { currentRoute } from "../stores/route-store";
 	import type { AxiosError } from "axios";
 
-	export let isAdminOnly = false;
+	$: isShowModal = $currentRoute.isAdmin && !$user.isAdmin;
 
-	$: isShowModal = false;
+	// $: {
+	// 	console.log({ $currentRoute });
+	// 	console.log({ $user });
+	// }
 
 	let userLogin: UserLogin;
 
@@ -19,8 +23,6 @@
 	let submitErrorMessage = "";
 
 	let isAllValid = false;
-
-	$: if (isAdminOnly) isShowModal = !$isAdmin;
 
 	$: isAllValid = !!(isValidEmail && isValidPassword);
 
@@ -108,7 +110,7 @@
 			}
 		} catch (error: any) {
 			const err = <AxiosError>error;
-			console.log(err);
+			console.error(err);
 			if (err.response?.status) {
 				let s = +error.response.status;
 				submitErrorMessage =
@@ -131,11 +133,15 @@
 	resetUserLogin();
 </script>
 
-{#if $isLoggedIn}
-	{$user.fullName || $user.email} &#8226;
-	<a href="/" on:click|preventDefault={signOut}>Sign out</a>
-{:else}
-	<a href="/" on:click|preventDefault={() => showLogin()}>Sign in</a>
+{#if $currentRoute.isAdmin}
+	<div class="signin-bar-container">
+		{#if $isLoggedIn}
+			{$user.fullName || $user.email} &#8226;
+			<a href="/" on:click|preventDefault={signOut}>Sign out</a>
+		{:else}
+			<a href="/" on:click|preventDefault={() => showLogin()}>Sign in</a>
+		{/if}
+	</div>
 {/if}
 
 <Modal {isShowModal} on:setmodal={() => {}}>
@@ -148,6 +154,7 @@
 				<span class="is-size-7 has-text-danger" title="Required">(*)</span>
 			</label>
 			<div class="control has-icons-left has-icons-right">
+				<!-- svelte-ignore a11y-positive-tabindex -->
 				<input
 					id="email"
 					class="input"
@@ -156,6 +163,7 @@
 					class:is-danger={isValidEmail === false}
 					type="email"
 					placeholder="email"
+					tabindex="10"
 					bind:value={userLogin.email}
 					on:blur={validateEmail}
 				/>
@@ -184,6 +192,7 @@
 				<span class="is-size-7 has-text-danger" title="Required">(*)</span>
 			</label>
 			<div class="control has-icons-right">
+				<!-- svelte-ignore a11y-positive-tabindex -->
 				<input
 					id="password"
 					class="input"
@@ -192,8 +201,9 @@
 					class:is-danger={isValidPassword === false}
 					type="password"
 					placeholder="Password"
+					tabindex="11"
 					bind:value={userLogin.pw}
-					on:blur={validatePassword}
+					on:keyup={validatePassword}
 				/>
 				<span class="icon is-small is-right">
 					{#if isValidPassword === true}
@@ -215,8 +225,10 @@
 
 		<div class="field is-grouped" style="align-items: center;">
 			<div class="control">
+				<!-- svelte-ignore a11y-positive-tabindex -->
 				<button
 					class="button is-success"
+					tabindex="12"
 					on:click={signIn}
 					disabled={!isAllValid}
 				>
@@ -224,15 +236,29 @@
 				</button>
 			</div>
 			<div class="control">
-				<button class="button" on:click={cancel}> Cancel </button>
+				<!-- svelte-ignore a11y-positive-tabindex -->
+				<button class="button" tabindex="13" on:click={cancel}> Cancel </button>
 			</div>
 			<div style="color:red;">{submitErrorMessage}</div>
 		</div>
+		{#if $isLoggedIn}
+			<div style="padding:0.5rem;">
+				<a href="/" on:click={signOut}>Sign Out</a>
+			</div>
+		{/if}
 	</div>
 </Modal>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
+
+	.signin-bar-container {
+		max-width: $content-width;
+		margin: 0 auto;
+		text-align: right;
+		font-size: 0.8rem;
+		padding: 0.25rem 0.5rem;
+	}
 
 	.signin-container {
 		position: relative;

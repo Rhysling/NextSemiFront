@@ -23,8 +23,3 @@ export const isLoggedIn = derived(
 	user,
 	$user => !!$user.email
 );
-
-export const isAdmin = derived(
-	user,
-	$user => !!$user.isAdmin
-);

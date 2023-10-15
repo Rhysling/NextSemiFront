@@ -11,7 +11,7 @@
 	import Technology from "./pages/Technology.svelte";
 	import About from "./pages/About.svelte";
 	import Contact from "./pages/Contact.svelte";
-	import Admin from "./pages/admin/Admin.svelte";
+	import Admin from "./pages/Admin.svelte";
 
 	import { currentRoute, navFromUrl } from "./stores/route-store.js";
 

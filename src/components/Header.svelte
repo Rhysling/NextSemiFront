@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { currentRoute } from "../stores/route-store";
+	import SignIn from "../components/SignIn.svelte";
 	import Headroom from "./Headroom.svelte"; // Thanks to "svelte-headroom"
 	import Nav from "./Nav.svelte";
 
@@ -21,6 +22,9 @@
 			</div>
 		</div>
 	</Headroom>
+	<div class="login">
+		<SignIn />
+	</div>
 	{#if $currentRoute.path === "/"}
 		<!-- <div class="logo">
 			<img src="./assets/img/logo-med.png" alt="NEXT Semiconductor" />

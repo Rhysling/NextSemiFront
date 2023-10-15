@@ -63,8 +63,9 @@ let getBaseRoutes = (): Route => {
 				title: "Admin",
 				page: "Admin",
 				navName: "Admin",
-				path: "/admin/admin",
+				path: "/admin",
 				isHidden: true,
+				isAdmin: true,
 				children: []
 			}
 		]
