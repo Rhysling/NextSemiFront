@@ -2,7 +2,7 @@
 	import MainContainer from "../components/MainContainer.svelte";
 </script>
 
-<MainContainer headline="System-on-Chip Platform">
+<MainContainer headline="NXT-SoC: System-on-Chip Platform">
 	<p>The NX1 SoC platform for next generation wideband SDX systems</p>
 	<p>
 		Work with us to define your next SoC or on-ramp to our active developments

@@ -1,42 +1,34 @@
 <script lang="ts">
+	import { navTo } from "../stores/route-store";
 	import MainContainer from "../components/MainContainer.svelte";
 </script>
 
 <MainContainer headline="">
-	<h1>This is the home page.</h1>
-	<p><a href="/">This is a link</a> with more text.</p>
-	<p>To Come</p>
+	<div class="nxt-links">
+		<a href="/" on:click={(e) => navTo(e, "/software-defined-radio")}
+			>NXT-SDX: Software-Defined Radio / Radar / Optical</a
+		>
+
+		<a href="/" on:click={(e) => navTo(e, "/system-on-chip")}
+			>NXT-SoC: System-on-Chip Platform</a
+		>
+
+		<a href="/" on:click={(e) => navTo(e, "/intellectual-property")}
+			>NXT-IP: Intellectual Property Cores</a
+		>
+	</div>
 </MainContainer>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
 
-	h1 {
-		margin-top: 3rem;
-		text-align: center;
-		font-size: 4rem;
+	.nxt-links {
+		display: flex;
+		flex-direction: column;
+
+		a {
+			font-size: 1.5rem;
+			padding: 1rem 1rem 1rem 3rem;
+		}
 	}
-
-	p {
-		padding: 3rem 2rem;
-	}
-
-	// .logo {
-	// 	height: 6em;
-	// 	padding: 1.5em;
-	// 	will-change: filter;
-	// 	transition: filter 300ms;
-
-	// 	&:hover {
-	// 		filter: drop-shadow(0 0 2em #646cffaa);
-	// 	}
-
-	// 	&.svelte:hover {
-	// 		filter: drop-shadow(0 0 2em #ff3e00aa);
-	// 	}
-	// }
-
-	// .read-the-docs {
-	// 	color: #888;
-	// }
 </style>
