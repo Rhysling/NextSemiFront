@@ -2,16 +2,44 @@
 	import MainContainer from "../components/MainContainer.svelte";
 </script>
 
-<MainContainer headline="NXT-SDX: Software-Defined Radio System">
-	<p>To Come</p>
-	<p>To Come</p>
-	<p>To Come</p>
+<MainContainer headline="NXT-SDX: Software-Defined Radio / Radar / Optical">
+	<div class="panels">
+		<div class="item center">
+			<div>
+				<ul>
+					<li>radar (machine vision)</li>
+					<li>comm waveform analysis</li>
+					<li>spectrum analysis</li>
+				</ul>
+			</div>
+			<img src="./assets/img/phased-array-panel.png" alt="Phased Array Panel" />
+		</div>
+		<div class="item center">
+			<img src="./assets/img/sdx-flow.png" alt="SDX Flow" />
+		</div>
+	</div>
+	<div class="center">
+		<img src="./assets/img/complete-solution.png" alt="Complete Solution" />
+	</div>
 </MainContainer>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
 
-	p {
-		padding: 3rem 2rem;
+	.panels {
+		display: flex;
+		flex-direction: row;
+
+		.item {
+			flex: 1 1 50%;
+			padding: 1rem;
+		}
+	}
+
+	.center {
+		> div,
+		> img {
+			margin: 0 auto;
+		}
 	}
 </style>

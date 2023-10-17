@@ -1,0 +1,21 @@
+[
+{"id":1,"name":"NXT-ADC-10B-48G","category":"ADC IP CORE","resolution":"10-bits","speed":"48-Gsps","technology":"GF12"},
+{"id":2,"name":"NXT-ADC-10B-24G","category":"ADC IP CORE","resolution":"10-bits","speed":"24-Gsps","technology":"GF12"},
+{"id":3,"name":"NXT-ADC-12B-12G","category":"ADC IP CORE","resolution":"12-bits","speed":"12-Gsps","technology":"GF12, N16"},
+{"id":4,"name":"NXT-ADC-12B-6G","category":"ADC IP CORE","resolution":"12-bits","speed":"6-Gsps","technology":"GF12, N16"},
+{"id":5,"name":"NXT-ADC-14B-2G","category":"ADC IP CORE","resolution":"14-bits","speed":"2-Gsps","technology":"GF22"},
+{"id":6,"name":"NXT-ADC-16B-1G","category":"ADC IP CORE","resolution":"16-bits","speed":"1-Gsps","technology":"GF22"},
+{"id":7,"name":"NXT-ADC-16B-500M","category":"ADC IP CORE","resolution":"16-bits","speed":"500-Msps","technology":"GF22"},
+{"id":8,"name":"NXT-ADC-16B-250M","category":"ADC IP CORE","resolution":"16-bits","speed":"250-Msps","technology":"GF22"},
+{"id":9,"name":"NXT-DAC-10B-48G","category":"DAC IP CORE","resolution":"10-bits","speed":"48-Gsps","technology":"GF12"},
+{"id":10,"name":"NXT-DAC-10B-24G","category":"DAC IP CORE","resolution":"10-bits","speed":"24-Gsps","technology":"GF12"},
+{"id":11,"name":"NXT-DAC-12B-12G","category":"DAC IP CORE","resolution":"12-bits","speed":"12-Gsps","technology":"GF12, N16"},
+{"id":12,"name":"NXT-ADC-12B-6G","category":"DAC IP CORE","resolution":"12-bits","speed":"6-Gsps","technology":"GF12, N16"},
+{"id":13,"name":"NXT-ADC-14B-2G","category":"DAC IP CORE","resolution":"14-bits","speed":"2-Gsps","technology":"GF22"},
+{"id":14,"name":"NXT-ADC-16B-1G","category":"DAC IP CORE","resolution":"16-bits","speed":"1-Gsps","technology":"GF22"},
+{"id":15,"name":"NXT-ADC-16B-500M","category":"DAC IP CORE","resolution":"16-bits","speed":"500-Msps","technology":"GF22"},
+{"id":16,"name":"NXT-ADC-16B-250M","category":"DAC IP CORE","resolution":"16-bits","speed":"250-Msps","technology":"GF22"},
+{"id":17,"name":"NXT-PLL-16G","category":"PLL IP CORE","resolution":"","speed":"16-GHz MAX FOUT","technology":"GF12, N16"},
+{"id":18,"name":"NXT-PLL-8G","category":"PLL IP CORE","resolution":"","speed":"8-GHz MAX FOUT","technology":"GF12, N16"},
+{"id":19,"name":"NXT-PLL-4G","category":"PLL IP CORE","resolution":"","speed":"4-GHz MAX FOUT","technology":"GF12, N16"}
+]

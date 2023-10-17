@@ -11,12 +11,15 @@
 	import Technology from "./pages/Technology.svelte";
 	import About from "./pages/About.svelte";
 	import Contact from "./pages/Contact.svelte";
-	import Admin from "./pages/Admin.svelte";
+	import AdminIp from "./pages/AdminIp.svelte";
+	import AdminContacts from "./pages/AdminContacts.svelte";
 
 	import { currentRoute, navFromUrl } from "./stores/route-store.js";
+	import { ipList } from "./stores/iplist-store.js";
 
 	let path = "/";
 	let page = "Home";
+	$ipList = [];
 
 	onMount(() => {
 		navFromUrl();
@@ -30,7 +33,8 @@
 		Technology,
 		About,
 		Contact,
-		Admin,
+		AdminIp,
+		AdminContacts,
 	};
 
 	$: {

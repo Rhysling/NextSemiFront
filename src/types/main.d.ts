@@ -40,6 +40,17 @@ type ContactMessage = {
 	message: string;
 };
 
+type IpItem = {
+	id: number;
+	name: string;
+	category: string;
+	description: string;
+	resolution: string;
+	speed: string;
+	technology: string;
+	fileName: string | null | undefined;
+}
+
 type UserClient = {
 	userId: number;
 	email: string;

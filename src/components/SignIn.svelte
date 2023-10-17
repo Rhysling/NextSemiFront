@@ -2,7 +2,7 @@
 	import Modal from "./Modal.svelte";
 	import { user, isLoggedIn } from "../stores/user-store";
 	import { httpClient as ax } from "../stores/httpclient-store";
-	import { currentRoute } from "../stores/route-store";
+	import { currentRoute, adminRoutes, navTo } from "../stores/route-store";
 	import type { AxiosError } from "axios";
 
 	$: isShowModal = $currentRoute.isAdmin && !$user.isAdmin;
@@ -11,6 +11,14 @@
 	// 	console.log({ $currentRoute });
 	// 	console.log({ $user });
 	// }
+
+	user.set({
+		userId: 123,
+		email: "bob@nextsemi.com",
+		fullName: "Bob K",
+		token: "abc",
+		isAdmin: true,
+	});
 
 	let userLogin: UserLogin;
 
@@ -136,9 +144,20 @@
 {#if $currentRoute.isAdmin}
 	<div class="signin-bar-container">
 		{#if $isLoggedIn}
-			{$user.fullName || $user.email} &#8226;
+			{#each $adminRoutes as ar}
+				<a class="signin-item" href="/" on:click={(e) => navTo(e, ar.path)}
+					>{ar.navName}</a
+				>
+			{/each}
+			<div class="signin-item" style="flex-grow:1;text-align:right;">
+				{$user.fullName || $user.email} &#8226;
+			</div>
 			<a href="/" on:click|preventDefault={signOut}>Sign out</a>
 		{:else}
+			<div class="signin-item" style="flex-grow:1;text-align:right;">
+				&nbsp;
+			</div>
+
 			<a href="/" on:click|preventDefault={() => showLogin()}>Sign in</a>
 		{/if}
 	</div>
@@ -253,11 +272,16 @@
 	@import "../styles/_custom-variables.scss";
 
 	.signin-bar-container {
+		display: flex;
+		justify-content: space-between;
 		max-width: $content-width;
 		margin: 0 auto;
-		text-align: right;
 		font-size: 0.8rem;
 		padding: 0.25rem 0.5rem;
+
+		.signin-item {
+			padding: 0 0.25rem 0 0;
+		}
 	}
 
 	.signin-container {

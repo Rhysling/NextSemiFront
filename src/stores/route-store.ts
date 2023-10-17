@@ -61,12 +61,31 @@ let getBaseRoutes = (): Route => {
 			},
 			{
 				title: "Admin",
-				page: "Admin",
+				page: "",
 				navName: "Admin",
-				path: "/admin",
+				path: "/",
 				isHidden: true,
 				isAdmin: true,
-				children: []
+				children: [
+					{
+						title: "IP Admin",
+						page: "AdminIp",
+						navName: "IP Admin",
+						path: "/admin-ip",
+						isHidden: true,
+						isAdmin: true,
+						children: []
+					},
+					{
+						title: "Contact Admin",
+						page: "AdminContacts",
+						navName: "Contact Admin",
+						path: "/admin-contacts",
+						isHidden: true,
+						isAdmin: true,
+						children: []
+					}
+				]
 			}
 		]
 	};
@@ -123,6 +142,12 @@ export const currentRoute = derived([routes, currentPath], ([$routes, $currentPa
 
 	$currentPath = "/";
 	return $routes;
+});
+
+export const adminRoutes = derived([routes], ([$routes]) => {
+	const r = $routes.children?.filter(a => a.isAdmin) ?? [];
+	if (r.length) return r[0].children ?? [];
+	return [];
 });
 
 // Param functions
