@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { navTo } from "../stores/route-store";
 	import MainContainer from "../components/MainContainer.svelte";
 </script>
 
@@ -22,6 +23,16 @@
 		<img src="./assets/img/complete-solution.png" alt="Complete Solution" />
 	</div>
 </MainContainer>
+
+<div class="g-nxt-pagenav">
+	<div class="g-nxt-l">
+		<a href="/" on:click={(e) => navTo(e, "/")}>&lt; Home</a>
+	</div>
+	<div class="g-nxt-c">|</div>
+	<div class="g-nxt-r">
+		<a href="/" on:click={(e) => navTo(e, "/system-on-chip")}>NXT-SoC &gt;</a>
+	</div>
+</div>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";

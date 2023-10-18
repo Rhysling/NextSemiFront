@@ -19,6 +19,16 @@
 	</div>
 </MainContainer>
 
+<div class="g-nxt-pagenav">
+	<div class="g-nxt-l">&nbsp;</div>
+	<div class="g-nxt-c">|</div>
+	<div class="g-nxt-r">
+		<a href="/" on:click={(e) => navTo(e, "/software-defined-radio")}
+			>NXT-SDX &gt;</a
+		>
+	</div>
+</div>
+
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
 

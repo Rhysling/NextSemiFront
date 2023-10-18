@@ -311,6 +311,14 @@
 	{/if}
 </MainContainer>
 
+<div class="g-nxt-pagenav">
+	<div class="g-nxt-l">
+		<a href="/" on:click={(e) => navTo(e, "/about-us")}>&lt; About</a>
+	</div>
+	<div class="g-nxt-c">|</div>
+	<div class="g-nxt-r">&nbsp;</div>
+</div>
+
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
 

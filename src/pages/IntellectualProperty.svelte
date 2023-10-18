@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { navTo } from "../stores/route-store";
 	import { httpClient as ax } from "../stores/httpclient-store";
 	import { ipList } from "../stores/iplist-store.js";
 	import MainContainer from "../components/MainContainer.svelte";
@@ -88,6 +89,16 @@
 		{/each}
 	</div>
 </MainContainer>
+
+<div class="g-nxt-pagenav">
+	<div class="g-nxt-l">
+		<a href="/" on:click={(e) => navTo(e, "/system-on-chip")}>&lt; NXT-SoC</a>
+	</div>
+	<div class="g-nxt-c">|</div>
+	<div class="g-nxt-r">
+		<a href="/" on:click={(e) => navTo(e, "/technology")}>Technology &gt;</a>
+	</div>
+</div>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";

@@ -84,3 +84,25 @@ button.is-success {
 }
 
 // Global classes
+
+.g-nxt-pagenav {
+	display: flex;
+	justify-content: center;
+	gap: 0.25rem;
+	padding: 1rem 1rem 2rem;
+
+	.g-nxt-l {
+		flex: 1 1 1;
+		text-align: right;
+		min-width: 7rem;
+	}
+
+	.g-nxt-c {
+		flex: 0 0 auto;
+	}
+
+	.g-nxt-r {
+		flex: 1 1 1;
+		min-width: 7rem;
+	}
+}

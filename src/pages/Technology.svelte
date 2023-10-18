@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { navTo } from "../stores/route-store";
 	import MainContainer from "../components/MainContainer.svelte";
 </script>
 
@@ -29,6 +30,18 @@
 		DIGITAL DATA CONVERSION ENABLING THE DIGITAL REVOLUTION
 	</div>
 </MainContainer>
+
+<div class="g-nxt-pagenav">
+	<div class="g-nxt-l">
+		<a href="/" on:click={(e) => navTo(e, "/intellectual-property")}
+			>&lt; NXT-IP</a
+		>
+	</div>
+	<div class="g-nxt-c">|</div>
+	<div class="g-nxt-r">
+		<a href="/" on:click={(e) => navTo(e, "/about-us")}>About &gt;</a>
+	</div>
+</div>
 
 <style lang="scss">
 	@import "../styles/_custom-variables.scss";
