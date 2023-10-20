@@ -9,6 +9,8 @@
 		company: "",
 		phone: "",
 		message: "",
+		sentAt: "",
+		statusCode: 0,
 	};
 
 	let isValidName: TriState = null; // true / false

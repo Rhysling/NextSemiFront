@@ -11,7 +11,7 @@ type Route = {
 	hasSelectedChild?: boolean;
 };
 
-type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
+type JsonValue = string | number | boolean | null | undefined | JsonValue[] | { [key: string]: JsonValue };
 
 type TriState = boolean | null;
 
@@ -32,35 +32,35 @@ type RecaptchaVerificationResult = {
 	errorCodes: string[];
 };
 
-type ContactMessage = {
-	name: string;
-	email: string;
-	company: string;
-	phone: string;
-	message: string;
-};
+// type ContactMessage = {
+// 	name: string;
+// 	email: string;
+// 	company: string;
+// 	phone: string;
+// 	message: string;
+// };
 
-type IpItem = {
-	id: number;
-	name: string;
-	category: string;
-	description: string;
-	resolution: string;
-	speed: string;
-	technology: string;
-	fileName: string | null | undefined;
-}
+// type IpItem = {
+// 	id: number;
+// 	name: string;
+// 	category: string;
+// 	description: string;
+// 	resolution: string;
+// 	speed: string;
+// 	technology: string;
+// 	fileName: string | null | undefined;
+// }
 
-type UserClient = {
-	userId: number;
-	email: string;
-	fullName: string;
-	token: string;
-	isAdmin: boolean;
-};
+// type UserClient = {
+// 	userId: number;
+// 	email: string;
+// 	fullName: string;
+// 	token: string;
+// 	isAdmin: boolean;
+// };
 
-type UserLogin = {
-	email: string;
-	fullName: string;
-	pw: string;
-};
+// type UserLogin = {
+// 	email: string;
+// 	fullName: string;
+// 	pw: string;
+// };

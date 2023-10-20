@@ -2,9 +2,7 @@
 import fs from "fs-extra";
 
 // console.log("__dirname: ", __dirname);
-let baseUrl = "https://nextsemi-demo.com";
-
-
+let baseUrl = "https://nextsemi.com";
 
 // fs.ensureDirSync(".\\public-busted");
 // fs.emptyDirSync(".\\public-busted");
