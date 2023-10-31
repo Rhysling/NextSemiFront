@@ -1,5 +1,5 @@
-// Using MSBuild ver. 7.0.402 to load projects.
-// Generated - 2023/10/20-15:23:04
+// Using MSBuild ver. 7.0.403 to load projects.
+// Generated - 2023/10/29-11:21:04
 
 // SOLUTION: NextSemiBack
 
@@ -31,17 +31,22 @@ type IpItem = {
 	fileName: INullable<string>;
 };
 
-type UserClient = {
+type UserClientRemote = {
 	userId: number;
 	email: string;
 	fullName: string;
 	token: INullable<string>;
 	isAdmin: boolean;
+	isDisabled: boolean;
 };
 
 type UserLogin = {
 	email: string;
-	fullName: string;
 	pw: string;
 };
 
+type UserRegister = {
+	fullName: string;
+	email: string;
+	pw: string;
+};

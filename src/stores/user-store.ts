@@ -1,6 +1,6 @@
 
 import { localStore } from './localstorage-store';
-import { get, derived } from 'svelte/store';
+import { derived } from 'svelte/store';
 
 const getEmptyUser = () => {
 	return {
@@ -8,11 +8,12 @@ const getEmptyUser = () => {
 		email: "",
 		fullName: "",
 		token: "",
-		isAdmin: false
+		isAdmin: false,
+		isDisabled: false
 	}
 };
 
-const u = localStore<UserClient>("user", getEmptyUser());
+const u = localStore<UserClientRemote>("user", getEmptyUser());
 
 export const user = {
 	...u,

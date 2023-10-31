@@ -32,8 +32,7 @@ let getBaseRoutes = (): Route => {
 						navName: "NXT-IP: Intellectual Property Cores",
 						path: "/intellectual-property",
 						children: []
-					},
-
+					}
 				]
 			},
 			{
@@ -58,12 +57,19 @@ let getBaseRoutes = (): Route => {
 				path: "/contact-us",
 				isHidden: false,
 				children: []
+			}, {
+				title: "Register",
+				page: "Register",
+				navName: "Register",
+				path: "/register",
+				isHidden: true,
+				children: []
 			},
 			{
 				title: "Admin",
-				page: "",
+				page: "Admin",
 				navName: "Admin",
-				path: "/",
+				path: "/admin",
 				isHidden: true,
 				isAdmin: true,
 				children: [
@@ -81,6 +87,15 @@ let getBaseRoutes = (): Route => {
 						page: "AdminContacts",
 						navName: "Contact Admin",
 						path: "/admin-contacts",
+						isHidden: true,
+						isAdmin: true,
+						children: []
+					},
+					{
+						title: "User Admin",
+						page: "AdminUsers",
+						navName: "User Admin",
+						path: "/admin-users",
 						isHidden: true,
 						isAdmin: true,
 						children: []
@@ -135,6 +150,8 @@ export const routes = readable(getBaseRoutes());
 
 export const currentPath = writable("/");
 export const currentParams = writable<any>({});
+export const isShowLogin = writable<boolean>(false);
+
 
 export const currentRoute = derived([routes, currentPath], ([$routes, $currentPath]) => {
 	let r = findRoute($routes, $currentPath);
@@ -145,9 +162,9 @@ export const currentRoute = derived([routes, currentPath], ([$routes, $currentPa
 });
 
 export const adminRoutes = derived([routes], ([$routes]) => {
-	const r = $routes.children?.filter(a => a.isAdmin) ?? [];
-	if (r.length) return r[0].children ?? [];
-	return [];
+	const r1 = $routes.children?.filter(a => a.isAdmin) ?? [];
+	const r2 = r1.flatMap(a => a.children?.filter(c => c.isAdmin) ?? []);
+	return [...r1, ...r2];
 });
 
 // Param functions

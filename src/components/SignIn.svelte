@@ -2,23 +2,14 @@
 	import Modal from "./Modal.svelte";
 	import { user, isLoggedIn } from "../stores/user-store";
 	import { httpClient as ax } from "../stores/httpclient-store";
-	import { currentRoute, adminRoutes, navTo } from "../stores/route-store";
+	import {
+		adminRoutes,
+		navTo,
+		isShowLogin,
+		currentRoute,
+	} from "../stores/route-store";
 	import type { AxiosError } from "axios";
-
-	$: isShowModal = $currentRoute.isAdmin && !$user.isAdmin;
-
-	// $: {
-	// 	console.log({ $currentRoute });
-	// 	console.log({ $user });
-	// }
-
-	user.set({
-		userId: 123,
-		email: "bob@nextsemi.com",
-		fullName: "Bob K",
-		token: "abc",
-		isAdmin: true,
-	});
+	import Nav from "./Nav.svelte";
 
 	let userLogin: UserLogin;
 
@@ -34,12 +25,6 @@
 
 	$: isAllValid = !!(isValidEmail && isValidPassword);
 
-	const showModal = (val: boolean) => (isShowModal = val);
-
-	const showLogin = () => {
-		showModal(true);
-	};
-
 	const resetUserLogin = () => {
 		isValidEmail = null;
 		emailValidationMessage = "";
@@ -47,14 +32,25 @@
 
 		userLogin = {
 			email: "",
-			fullName: "",
 			pw: "",
 		};
 	};
 
+	const showLogin = () => {
+		$isShowLogin = true;
+
+		setTimeout(() => {
+			let el = document.getElementById("email");
+			if (el) {
+				el.focus();
+			}
+		}, 100);
+	};
+
 	const signOut = () => {
+		if ($currentRoute.isAdmin) navTo(null, "/");
+
 		user.logOut();
-		isShowModal = true;
 	};
 
 	const validateEmail = () => {
@@ -94,25 +90,13 @@
 
 		if (!isAllValid) return;
 
-		// let uc: UserClient = {
-		// 	userId: 123,
-		// 	fullName: userLogin.fullName,
-		// 	email: userLogin.email,
-		// 	token: "the token here",
-		// 	isAdmin: true,
-		// };
-
-		// user.set(uc);
-		// console.log({ uc });
-		// return;
-
 		try {
-			let res = await $ax.post<UserClient>("/api/Login", userLogin);
+			let res = await $ax.post<UserClientRemote>("/api/Users/Login", userLogin);
 			if (res && res.data) {
 				user.set(res.data);
-				console.log({ uc: res.data });
+				console.log({ ucr: res.data });
 				resetUserLogin();
-				isShowModal = false;
+				$isShowLogin = false;
 			} else {
 				submitErrorMessage = "Something went wrong.";
 			}
@@ -131,39 +115,41 @@
 		}
 	};
 
-	let cancel = function () {
+	const cancel = function () {
 		resetUserLogin();
-		isShowModal = true;
+		$isShowLogin = false;
 	};
 
 	// Init
-
 	resetUserLogin();
 </script>
 
-{#if $currentRoute.isAdmin}
-	<div class="signin-bar-container">
-		{#if $isLoggedIn}
-			{#each $adminRoutes as ar}
+<div class="signin-bar-container">
+	{#if $isLoggedIn}
+		{#if $user.isAdmin}
+			{#each $adminRoutes as ar, i}
+				{@const len = $adminRoutes.length - 1}
 				<a class="signin-item" href="/" on:click={(e) => navTo(e, ar.path)}
 					>{ar.navName}</a
-				>
+				>{#if i < len}<span class="signin-item">&#8226;</span>{/if}
 			{/each}
-			<div class="signin-item" style="flex-grow:1;text-align:right;">
-				{$user.fullName || $user.email} &#8226;
-			</div>
-			<a href="/" on:click|preventDefault={signOut}>Sign out</a>
-		{:else}
-			<div class="signin-item" style="flex-grow:1;text-align:right;">
-				&nbsp;
-			</div>
-
-			<a href="/" on:click|preventDefault={() => showLogin()}>Sign in</a>
 		{/if}
-	</div>
-{/if}
+		<div class="signin-item" style="flex-grow:1;text-align:right;">
+			{$user.fullName || $user.email} &#8226;
+		</div>
+		<a href="/" on:click|preventDefault={signOut}>Sign out</a>
+	{:else}
+		<div class="signin-item" style="flex-grow:1;text-align:right;">&nbsp;</div>
 
-<Modal {isShowModal} on:setmodal={() => {}}>
+		<a href="/" on:click|preventDefault={(e) => navTo(e, "/register")}
+			>Sign up</a
+		>
+		<span style="margin:0 0.25rem;">&#8226;</span>
+		<a href="/" on:click|preventDefault={() => showLogin()}>Sign in</a>
+	{/if}
+</div>
+
+<Modal isShowModal={$isShowLogin} on:setmodal={() => {}}>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div class="signin-container" on:click={(e) => e.stopPropagation()}>
@@ -222,7 +208,7 @@
 					placeholder="Password"
 					tabindex="11"
 					bind:value={userLogin.pw}
-					on:keyup={validatePassword}
+					on:blur={validatePassword}
 				/>
 				<span class="icon is-small is-right">
 					{#if isValidPassword === true}

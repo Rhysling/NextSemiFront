@@ -11,8 +11,11 @@
 	import Technology from "./pages/Technology.svelte";
 	import About from "./pages/About.svelte";
 	import Contact from "./pages/Contact.svelte";
+	import Register from "./pages/Register.svelte";
+	import Admin from "./pages/Admin.svelte";
 	import AdminIp from "./pages/AdminIp.svelte";
 	import AdminContacts from "./pages/AdminContacts.svelte";
+	import AdminUsers from "./pages/AdminUsers.svelte";
 
 	import { currentRoute, navFromUrl } from "./stores/route-store.js";
 	import { ipList } from "./stores/iplist-store.js";
@@ -33,8 +36,11 @@
 		Technology,
 		About,
 		Contact,
+		Register,
+		Admin,
 		AdminIp,
 		AdminContacts,
+		AdminUsers,
 	};
 
 	$: {
